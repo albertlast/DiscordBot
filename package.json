@@ -1,0 +1,37 @@
+{
+  "name": "discordbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "watch": "tsc -p tsconfig.json -w",
+    "test": "mocha -r ts-node/register  \"src/test/*.spec.ts\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertlast/DiscordBot.git"
+  },
+  "author": "",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/albertlast/DiscordBot/issues"
+  },
+  "homepage": "https://github.com/albertlast/DiscordBot#readme",
+  "dependencies": {
+    "@types/node": "^12.7.1",
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.0.0",
+    "inversify": "^5.0.1",
+    "reflect-metadata": "^0.1.13",
+    "typescript": "^3.5.3"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.0",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
+    "ts-mockito": "^2.4.2",
+    "ts-node": "^8.3.0"
+  }
+}
