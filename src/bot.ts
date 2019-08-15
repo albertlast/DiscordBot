@@ -29,7 +29,8 @@ export class Bot {
                 return
             }
             console.log("Message received! Contents: ", message.content)
-            this.messageResponder.handle(message).then(() => {
+            this.messageResponder.handle(message)
+            .then(() => {
                 console.log("Response sent!")
             }).catch(() => {
                 console.log("Response not sent.")

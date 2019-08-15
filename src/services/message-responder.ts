@@ -19,7 +19,7 @@ export class MessageResponder {
     }
     handle(message: Message): Promise<Message> {
         if (this.pingFinder.isPing(message.content)) {
-            message.reply('pong!')
+            return new Promise<Message>((resolve) => message.reply('pong!'))
         }
         else 
             return Promise.reject();
