@@ -22,7 +22,7 @@ export class Bot {
         this.token = token
         this.messageResponder = messageResponder
     }
-    public listen(): Promise < string > {
+    public listen(): Promise<string> {
         this.client.on('message', (message: Message) => {
             if (message.author.bot) {
                 console.log('Ignoring bot message!')
@@ -30,11 +30,11 @@ export class Bot {
             }
             console.log("Message received! Contents: ", message.content)
             this.messageResponder.handle(message)
-            .then(() => {
-                console.log("Response sent!")
-            }).catch(() => {
-                console.log("Response not sent.")
-            })
+                .then(() => {
+                    console.log("Response sent!")
+                }).catch(() => {
+                    console.log("Response not sent.")
+                })
         });
         return this.client.login(this.token)
     }

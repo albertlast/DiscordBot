@@ -10,18 +10,23 @@ import {
 } from "./bot"
 import {
     Client
-} from "discord.js"  
-import { 
-    MessageResponder 
+} from "discord.js"
+import {
+    MessageResponder
 } from "./services/message-responder"
-import { 
-    PingFinder 
+import {
+    PingFinder
 } from "./services/ping-finder"
+import {
+    Command
+} from "./services/command"
 
 let container = new Container()
-container.bind < Bot > (TYPES.Bot).to(Bot).inSingletonScope()
-container.bind < Client > (TYPES.Client).toConstantValue(new Client())
-container.bind < string > (TYPES.Token).toConstantValue(process.env.TOKEN)
-container.bind <MessageResponder> (TYPES.MessageResponder).to(MessageResponder).inSingletonScope();
-container.bind <PingFinder> (TYPES.PingFinder).to(PingFinder).inSingletonScope();
+container.bind<Bot>(TYPES.Bot).to(Bot).inSingletonScope()
+container.bind<Client>(TYPES.Client).toConstantValue(new Client())
+container.bind<string>(TYPES.Token).toConstantValue(process.env.TOKEN)
+container.bind<MessageResponder>(TYPES.MessageResponder).to(MessageResponder).inSingletonScope()
+container.bind<PingFinder>(TYPES.PingFinder).to(PingFinder).inSingletonScope()
+container.bind<Command>(TYPES.Command).to(Command).inSingletonScope()
+
 export default container
