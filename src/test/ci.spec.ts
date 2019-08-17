@@ -39,12 +39,12 @@ describe('MessageResponder', () => {
         setMessageContents()
         service = new MessageResponder(mockedPingFinderInstance, mockedCommandInstance)
     })
-    it('should reply', async () => {
+    it('(ping) should reply', async () => {
         whenIsPingThenReturn(true)
         await service.handle(mockedMessageInstance)
         verify(mockedMessageClass.reply('pong!')).once()
     })
-    it('should not reply', async () => {
+    it('(ping) should not reply', async () => {
         whenIsPingThenReturn(false);
         await service.handle(mockedMessageInstance)
             .then(() => {
@@ -56,12 +56,12 @@ describe('MessageResponder', () => {
             });
         verify(mockedMessageClass.reply('pong!')).never();
     })
-    it('should reply', async () => {
+    it('(command) should reply', async () => {
         whenIsCommandThenReturn(true)
         await service.handle(mockedMessageInstance)
-        verify(mockedMessageClass.reply('nice')).once()
+        verify(mockedMessageClass.reply('nice!')).once()
     })
-    it('should not reply', async () => {
+    it('(command) should not reply', async () => {
         whenIsCommandThenReturn(false);
         await service.handle(mockedMessageInstance)
             .then(() => {
@@ -71,7 +71,7 @@ describe('MessageResponder', () => {
             .catch(() => {
                 // Rejected promise is expected, so nothing happens here 
             });
-        verify(mockedMessageClass.reply('nice')).never();
+        verify(mockedMessageClass.reply('nice!')).never();
     })
     function setMessageContents() {
         mockedMessageInstance.content = "Non-empty string";
@@ -81,6 +81,8 @@ describe('MessageResponder', () => {
     }
     function whenIsCommandThenReturn(result: boolean) {
         when(mockedCommandClass.isCommand("Non-empty string")).thenReturn(result);
+        when(mockedCommandClass.doThing("Non-empty string")).thenReturn(result);
+        when(mockedCommandClass.getMessage()).thenReturn("nice!");
     }
 })
 
