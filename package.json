@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node -r ts-node/register src/index.ts",
     "watch": "tsc -p tsconfig.json -w",
-    "test": "mocha -r ts-node/register  \"src/test/*.spec.ts\""
+    "test": "mocha -r ts-node/register  \"src/test/*.spec.ts\"",
+    "clean": "tsc --build -p tsconfig.json --clean | tsc -p tsconfig.json"
   },
   "repository": {
     "type": "git",
